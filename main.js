@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const whatsappMessage = `*New Message from Portfolio*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Phone:* ${encodeURIComponent(phone)}%0A%0A*Message:*%0A${encodeURIComponent(message)}%0A%0A_Message sent from maou portfolio_`;
             
-            const yourWhatsAppNumber = '2349037471667';
+            const yourWhatsAppNumber = '2348154899093';
             const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${whatsappMessage}`;
             
             window.open(whatsappURL, '_blank');
