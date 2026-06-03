@@ -94,9 +94,6 @@ a, button, input, textarea, .skill-item, .project, .image-frame,
                 border-color 0.4s ease;
 }
 
-/* Don't transition transform/opacity on theme change — 
-   let GSAP handle those. This avoids conflicts. */
-
 /* ============================================
    PAGE LOADER
    ============================================ */
