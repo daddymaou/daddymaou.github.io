@@ -24,68 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
     
-    // Custom Cursor
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorDot = document.querySelector('.cursor-dot');
-    
-    if (cursor && cursorDot) {
-        document.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.8,
-                ease: 'power2.out'
-            });
-            
-            gsap.to(cursorDot, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.1,
-                ease: 'power2.out'
-            });
-        });
-        
-        // Show cursor on page load
-        setTimeout(() => {
-            gsap.to([cursor, cursorDot], {
-                opacity: 1,
-                duration: 0.3
-            });
-        }, 1000);
-        
-        // Hover effects
-        const hoverElements = document.querySelectorAll('a, button, .skill-item, .project, .form-group input, .form-group textarea');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                gsap.to(cursor, {
-                    width: 60,
-                    height: 60,
-                    backgroundColor: 'rgba(45, 45, 45, 0.1)',
-                    duration: 0.3
-                });
-                gsap.to(cursorDot, {
-                    width: 12,
-                    height: 12,
-                    duration: 0.3
-                });
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                gsap.to(cursor, {
-                    width: 40,
-                    height: 40,
-                    backgroundColor: 'transparent',
-                    duration: 0.3
-                });
-                gsap.to(cursorDot, {
-                    width: 8,
-                    height: 8,
-                    duration: 0.3
-                });
-            });
-        });
-    }
-    
     // Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
@@ -279,170 +217,95 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ==========================================
-    // SMOOTH PROJECT SLIDER
+    // PROJECTS NAVIGATION — Clean buttons, no drag
     // ==========================================
     const projectsContainer = document.getElementById('projects-container');
-    const scrollbarThumb = document.querySelector('.scrollbar-thumb');
-    let isDragging = false;
-    let startX;
-    let scrollLeft;
-    let velocity = 0;
-    let momentumId;
-    let lastX;
-    let lastTime;
+    const prevBtn = document.getElementById('prev-project');
+    const nextBtn = document.getElementById('next-project');
+    const dotsContainer = document.getElementById('projects-dots');
     
-    // Update scrollbar
-    function updateScrollbar() {
-        if (!scrollbarThumb || !projectsContainer) return;
-        const maxScroll = projectsContainer.scrollWidth - projectsContainer.clientWidth;
-        if (maxScroll <= 0) return;
-        const scrollPercentage = projectsContainer.scrollLeft / maxScroll;
-        const thumbWidth = (projectsContainer.clientWidth / projectsContainer.scrollWidth) * 100;
-        scrollbarThumb.style.width = `${Math.max(thumbWidth, 10)}%`;
-        scrollbarThumb.style.transform = `translateX(${scrollPercentage * (100 - thumbWidth)}%)`;
-    }
-    
-    // Momentum scrolling
-    function applyMomentum() {
-        const friction = 0.95;
-        const minVelocity = 0.05;
+    if (projectsContainer && prevBtn && nextBtn) {
+        const projects = projectsContainer.querySelectorAll('.project');
+        let currentIndex = 0;
         
-        function animateMomentum() {
-            if (Math.abs(velocity) < minVelocity) {
-                cancelAnimationFrame(momentumId);
-                return;
-            }
-            
-            projectsContainer.scrollLeft -= velocity * 15;
-            velocity *= friction;
-            updateScrollbar();
-            
-            momentumId = requestAnimationFrame(animateMomentum);
+        // Create dots
+        if (dotsContainer) {
+            projects.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('project-dot');
+                dot.setAttribute('aria-label', `Project ${i + 1}`);
+                dot.addEventListener('click', () => scrollToProject(i));
+                dotsContainer.appendChild(dot);
+            });
         }
         
-        momentumId = requestAnimationFrame(animateMomentum);
-    }
-    
-    // Drag start — prevents vertical scroll on touch devices
-    function handleDragStart(e) {
-        if (e.type === 'touchstart') {
-            e.preventDefault();
-        }
-        isDragging = true;
-        projectsContainer.style.cursor = 'grabbing';
+        const allDots = dotsContainer ? dotsContainer.querySelectorAll('.project-dot') : [];
         
-        const clientX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-        startX = clientX - projectsContainer.offsetLeft;
-        scrollLeft = projectsContainer.scrollLeft;
-        
-        velocity = 0;
-        lastX = clientX;
-        lastTime = Date.now();
-        
-        cancelAnimationFrame(momentumId);
-    }
-    
-    // Drag move
-    function handleDragMove(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        
-        const clientX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-        const x = clientX - projectsContainer.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        
-        projectsContainer.scrollLeft = scrollLeft - walk;
-        
-        // Calculate velocity
-        const currentTime = Date.now();
-        const deltaTime = currentTime - lastTime;
-        
-        if (deltaTime > 0) {
-            const deltaX = clientX - lastX;
-            velocity = deltaX / deltaTime;
-        }
-        
-        lastX = clientX;
-        lastTime = currentTime;
-        updateScrollbar();
-    }
-    
-    // Drag end
-    function handleDragEnd() {
-        isDragging = false;
-        projectsContainer.style.cursor = 'grab';
-        
-        if (Math.abs(velocity) > 0.1) {
-            applyMomentum();
-        }
-    }
-    
-    // Mouse events
-    projectsContainer.addEventListener('mousedown', handleDragStart);
-    projectsContainer.addEventListener('mousemove', handleDragMove);
-    projectsContainer.addEventListener('mouseup', handleDragEnd);
-    projectsContainer.addEventListener('mouseleave', handleDragEnd);
-    
-    // Touch events
-    projectsContainer.addEventListener('touchstart', handleDragStart, { passive: false });
-    projectsContainer.addEventListener('touchmove', handleDragMove, { passive: false });
-    projectsContainer.addEventListener('touchend', handleDragEnd);
-    
-    // Mouse wheel horizontal scroll — uses native scrollBy instead of fighting GSAP
-    projectsContainer.addEventListener('wheel', (e) => {
-        if (e.deltaY !== 0) {
-            e.preventDefault();
+        function updateButtons() {
+            if (prevBtn) prevBtn.disabled = currentIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentIndex >= projects.length - 1;
             
-            cancelAnimationFrame(momentumId);
+            allDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+        
+        function scrollToProject(index) {
+            if (index < 0 || index >= projects.length) return;
+            currentIndex = index;
             
-            projectsContainer.scrollBy({
-                left: e.deltaY * 1.5,
+            const project = projects[index];
+            const containerWidth = projectsContainer.clientWidth;
+            const projectLeft = project.offsetLeft;
+            const projectWidth = project.offsetWidth;
+            const scrollTarget = projectLeft - (containerWidth - projectWidth) / 2;
+            
+            projectsContainer.scrollTo({
+                left: Math.max(0, scrollTarget),
                 behavior: 'smooth'
             });
-        }
-    }, { passive: false });
-    
-    // Initialize scrollbar and cursor
-    projectsContainer.style.cursor = 'grab';
-    updateScrollbar();
-    
-    // Update scrollbar on window resize
-    window.addEventListener('resize', updateScrollbar);
-    
-    // Project hover animations
-    const projects = document.querySelectorAll('.project');
-    projects.forEach(project => {
-        project.addEventListener('mouseenter', () => {
-            gsap.to(project, {
-                scale: 1.02,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
             
-            gsap.to(project.querySelector('.project-img'), {
-                scale: 1.05,
-                duration: 0.6,
-                ease: 'power2.out'
-            });
+            updateButtons();
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) scrollToProject(currentIndex - 1);
         });
         
-        project.addEventListener('mouseleave', () => {
-            gsap.to(project, {
-                scale: 1,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
-            
-            gsap.to(project.querySelector('.project-img'), {
-                scale: 1,
-                duration: 0.6,
-                ease: 'power2.out'
-            });
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < projects.length - 1) scrollToProject(currentIndex + 1);
         });
-    });
+        
+        // Update active dot on manual scroll
+        let scrollTimeout;
+        projectsContainer.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const containerCenter = projectsContainer.scrollLeft + projectsContainer.clientWidth / 2;
+                
+                let closestIndex = 0;
+                let closestDistance = Infinity;
+                
+                projects.forEach((project, i) => {
+                    const projectCenter = project.offsetLeft + project.offsetWidth / 2;
+                    const distance = Math.abs(containerCenter - projectCenter);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestIndex = i;
+                    }
+                });
+                
+                currentIndex = closestIndex;
+                updateButtons();
+            }, 100);
+        });
+        
+        // Init
+        updateButtons();
+    }
     
     // ==========================================
-    // FIX: SMOOTH ANCHOR LINK SCROLLING
+    // SMOOTH ANCHOR LINK SCROLLING
     // ==========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -466,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ==========================================
-    // FIX: PAUSE LENIS ON FORM FOCUS (Mobile keyboard glitch)
+    // PAUSE LENIS ON FORM FOCUS (Mobile keyboard fix)
     // ==========================================
     const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
     
@@ -498,7 +361,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Improved phone validation
             const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
             const phoneRegex = /^\+?[0-9]{7,15}$/;
             if (!phoneRegex.test(cleanedPhone)) {
@@ -535,7 +397,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     messageTextarea.style.height = 'auto';
                 }
                 
-                // Restart Lenis after form reset (in case it was stopped)
                 lenis.start();
                 
                 setTimeout(() => {
