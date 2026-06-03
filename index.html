@@ -14,10 +14,6 @@
     <link rel="stylesheet" href="mobile.css">
 </head>
 <body data-theme="light">
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
-    <div class="cursor-dot"></div>
-    
     <!-- Page Loader -->
     <div class="page-loader">
         <div class="loader-text">ᗰᗩOᑌ</div>
@@ -153,11 +149,17 @@
     <section class="projects" id="work">
         <div class="projects-header">
             <h2 class="section-title">Selected Projects</h2>
-            <div class="scroll-hint-horizontal">
-                <span class="scroll-text">Scroll</span>
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <div class="projects-nav">
+                <button class="project-nav-btn" id="prev-project" aria-label="Previous project">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="project-nav-btn" id="next-project" aria-label="Next project">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
         </div>
         <div class="projects-wrapper">
@@ -235,9 +237,7 @@
                 </div>
             </div>
         </div>
-        <div class="projects-scrollbar">
-            <div class="scrollbar-thumb"></div>
-        </div>
+        <div class="projects-dots" id="projects-dots"></div>
     </section>
 
     <!-- CV Section -->
