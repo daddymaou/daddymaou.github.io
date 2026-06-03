@@ -258,19 +258,19 @@
             <h2 class="section-title">Contact</h2>
             <form class="contact-form" id="contact-form">
                 <div class="form-group">
-                    <input type="text" id="name" name="name" required placeholder=" ">
+                    <input type="text" id="name" name="name" required placeholder=" " autocomplete="name">
                     <label for="name">Name</label>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" required placeholder=" ">
+                    <input type="email" id="email" name="email" required placeholder=" " autocomplete="email">
                     <label for="email">Email</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="phone" name="phone" placeholder=" " required>
+                    <input type="tel" id="phone" name="phone" placeholder=" " required autocomplete="tel">
                     <label for="phone">Phone Number</label>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" name="message" rows="1" required placeholder=" "></textarea>
+                    <textarea id="message" name="message" rows="1" required placeholder=" " autocomplete="off"></textarea>
                     <label for="message">Message</label>
                 </div>
                 <button type="submit" class="submit-button">
