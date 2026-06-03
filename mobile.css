@@ -1,7 +1,4 @@
-/* ============================================
-   PERFECT MOBILE OPTIMIZATION
-   768px Breakpoint — All styles merged, no duplicates
-   ============================================ */
+/* PERFECT MOBILE OPTIMIZATION */ 
 @media (max-width: 768px) {
     :root {
         --spacing-xs: 0.4rem;
@@ -32,7 +29,7 @@
         line-height: 1.6;
     }
 
-    /* Navigation - Mobile */
+    /* Navigation - Mobile Perfect */
     .nav {
         padding: 0.75rem 0;
         backdrop-filter: blur(20px);
@@ -44,29 +41,14 @@
         gap: 0.75rem;
     }
 
-    .nav-logo {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        text-align: center;
-    }
-
     .nav-right {
         width: 100%;
         justify-content: space-between;
         gap: 1rem;
-        position: relative;
-        z-index: 1;
     }
 
     .nav-links {
         gap: 1.5rem;
-    }
-
-    .nav-link,
-    .theme-toggle {
-        -webkit-tap-highlight-color: transparent;
-        transform: translateZ(0);
     }
 
     .nav-link {
@@ -79,7 +61,7 @@
         height: 40px;
     }
 
-    /* Hero Section - Mobile */
+    /* Hero Section - Mobile Perfect */
     .hero {
         min-height: 90vh;
         padding: 0 1rem;
@@ -105,7 +87,7 @@
         bottom: 2rem;
     }
 
-    /* About Section - Mobile */
+    /* About Section - Mobile Perfect */
     .about {
         padding: var(--spacing-lg) 1rem;
     }
@@ -130,11 +112,7 @@
         margin-top: 1rem;
     }
 
-    .profile-image {
-        filter: grayscale(0%);
-    }
-
-    /* Skills Section - Mobile */
+    /* Skills Section - Mobile Perfect */
     .skills {
         padding: var(--spacing-lg) 1rem;
     }
@@ -156,7 +134,7 @@
         font-size: 1.125rem;
     }
 
-    /* Projects Section - Mobile */
+    /* Projects Section - Mobile Perfect */
     .projects {
         padding: var(--spacing-lg) 0;
     }
@@ -169,32 +147,29 @@
         margin-bottom: 1.5rem;
     }
 
-    .projects-nav {
-        gap: 0.75rem;
+    .scroll-hint-horizontal {
+        font-size: 0.85rem;
     }
 
-    .project-nav-btn {
-        width: 40px;
-        height: 40px;
+    .scroll-text {
+        display: inline-block;
     }
 
     .projects-container {
         padding: 0 1rem;
         gap: 1rem;
+        scroll-snap-type: x mandatory;
     }
 
     .project {
         flex: 0 0 calc(85vw - 2rem);
         min-height: 420px;
+        scroll-snap-align: start;
     }
 
     .project-image {
         min-height: 200px;
         height: 50%;
-    }
-
-    .project:hover .project-img {
-        transform: none;
     }
 
     .project-info {
@@ -210,7 +185,7 @@
         margin-bottom: 1rem;
     }
 
-    /* CV Section - Mobile */
+    /* CV Section - Mobile Perfect */
     .cv {
         padding: var(--spacing-lg) 1rem;
     }
@@ -224,7 +199,7 @@
         font-size: 1.0625rem;
     }
 
-    /* Contact Section - Mobile */
+    /* Contact Section - Mobile Perfect */
     .contact {
         padding: var(--spacing-lg) 1rem;
     }
@@ -241,18 +216,13 @@
         font-size: 0.95rem;
     }
 
-    .form-group input,
-    .form-group textarea {
-        font-size: 16px !important;
-    }
-
     .submit-button {
         width: 100%;
         justify-content: center;
         padding: 0.875rem 1.5rem;
     }
 
-    /* Footer - Mobile */
+    /* Footer - Mobile Perfect */
     .footer {
         padding: var(--spacing-md) 1rem;
         margin-top: var(--spacing-lg);
@@ -277,9 +247,7 @@
     }
 }
 
-/* ============================================
-   Small Mobile Devices (iPhone SE, etc.)
-   ============================================ */
+/* Small Mobile Devices (iPhone SE, etc.) */
 @media (max-width: 375px) {
     :root {
         --spacing-sm: 0.5rem;
@@ -313,9 +281,7 @@
     }
 }
 
-/* ============================================
-   Tablet Portrait
-   ============================================ */
+/* Tablet Portrait */
 @media (min-width: 769px) and (max-width: 1024px) {
     .about-container {
         gap: 3rem;
@@ -330,9 +296,7 @@
     }
 }
 
-/* ============================================
-   Tablet Landscape
-   ============================================ */
+/* Tablet Landscape */
 @media (min-width: 1025px) and (max-width: 1200px) {
     .nav-container,
     .about,
@@ -345,61 +309,60 @@
     }
 }
 
-/* ============================================
-   Touch Device Optimizations
-   ============================================ */
+/* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
     .skill-item:hover {
         padding-left: 0;
     }
-
+    
     .skill-item:active {
         padding-left: 0.5rem;
     }
-
+    
     .skill-desc {
         opacity: 1;
-        max-height: 100px;
+        height: auto;
     }
-
+    
     .cta-button:hover {
         transform: none;
         background-color: var(--color-text);
     }
-
+    
     .cta-button:active {
         transform: translateY(-2px);
         background-color: var(--color-accent);
     }
-
+    
     .cta-button:hover::before {
         left: -100%;
     }
-
+    
     .project-link:hover {
         gap: 0.5rem;
     }
-
+    
     .project-link:active {
         gap: 1rem;
     }
-
+    
     .submit-button:hover {
         background-color: var(--color-text);
     }
-
+    
     .submit-button:active {
         background-color: var(--color-accent);
     }
-
+    
     .nav-link:hover::after {
         width: 0;
     }
-
+    
     .nav-link:active::after {
         width: 100%;
     }
-
+    
+    /* Improve touch targets */
     .nav-link,
     .theme-toggle,
     .cta-button,
@@ -413,9 +376,7 @@
     }
 }
 
-/* ============================================
-   Reduced Motion
-   ============================================ */
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -424,29 +385,27 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-
+    
     .reveal {
         opacity: 1;
         transform: none;
         transition: none;
     }
-
+    
     .cursor {
         animation: none;
         opacity: 1;
     }
 }
 
-/* ============================================
-   High Contrast Mode
-   ============================================ */
+/* High Contrast Mode */
 @media (prefers-contrast: high) {
     :root {
         --color-text: #000;
         --color-text-light: #333;
         --color-border: #000;
     }
-
+    
     [data-theme="dark"] {
         --color-text: #fff;
         --color-text-light: #ccc;
@@ -454,11 +413,9 @@
     }
 }
 
-/* ============================================
-   System Dark Mode Preference
-   ============================================ */
+/* Dark mode detection for system preference */
 @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]):not([data-theme="dark"]) {
+    body:not([data-theme="light"]) {
         --color-bg: #0a0a0a;
         --color-text: #f5f5f5;
         --color-text-light: #a0a0a0;
@@ -467,5 +424,30 @@
         --color-border: #333;
         --color-card: #1a1a1a;
         --color-noise: rgba(255, 255, 255, 0.02);
+    }
+}
+/* MOBILE IMAGE OPTIMIZATION */
+@media (max-width: 768px) {
+    .image-frame {
+        padding-top: 100%;
+    }
+    
+    .profile-image {
+        filter: grayscale(0%);
+    }
+    
+    .project-image {
+        min-height: 200px;
+        height: 50%;
+    }
+    
+    .project:hover .project-img {
+        transform: none;
+    }
+    
+    /* Lazy loading optimization for mobile */
+    .profile-image,
+    .project-img {
+        loading: lazy;
     }
 }
