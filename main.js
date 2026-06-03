@@ -560,3 +560,121 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// ==========================================
+// ACTIVE PROJECT DETECTION (Glassmorphic Effect)
+// ==========================================
+function updateActiveProjects() {
+    const projects = document.querySelectorAll('.project');
+    const container = projectsContainer;
+    
+    if (!projects.length || !container) return;
+    
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.left + (containerRect.width / 2);
+    
+    projects.forEach(project => {
+        const projectRect = project.getBoundingClientRect();
+        const projectCenter = projectRect.left + (projectRect.width / 2);
+        const distanceFromCenter = Math.abs(containerCenter - projectCenter);
+        const threshold = projectRect.width * 0.6; // 60% of project width as threshold
+        
+        // Check if project is in viewport
+        const isInViewport = projectRect.right > containerRect.left && 
+                             projectRect.left < containerRect.right;
+        
+        if (distanceFromCenter < threshold && isInViewport) {
+            // This is the active (centered) project
+            project.classList.add('active');
+            project.classList.remove('inactive');
+        } else if (isInViewport) {
+            // Inactive but visible projects
+            project.classList.remove('active');
+            project.classList.add('inactive');
+        } else {
+            // Projects far outside viewport
+            project.classList.remove('active', 'inactive');
+        }
+    });
+}
+
+// Add scroll detection for projects
+projectsContainer.addEventListener('scroll', () => {
+    updateActiveProjects();
+    updateScrollbar();
+});
+
+// Update on window resize
+window.addEventListener('resize', () => {
+    updateActiveProjects();
+});
+
+// Initial call to set active projects
+setTimeout(() => {
+    updateActiveProjects();
+}, 100);
+
+// Update active projects when scrolling stops (for smoother experience)
+let scrollTimeout;
+projectsContainer.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        updateActiveProjects();
+    }, 100);
+});
+
+// Optional: Snap to nearest project on scroll end
+function snapToNearestProject() {
+    const projects = document.querySelectorAll('.project');
+    const container = projectsContainer;
+    
+    if (!projects.length) return;
+    
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.left + (containerRect.width / 2);
+    
+    let closestProject = null;
+    let closestDistance = Infinity;
+    
+    projects.forEach(project => {
+        const projectRect = project.getBoundingClientRect();
+        const projectCenter = projectRect.left + (projectRect.width / 2);
+        const distance = Math.abs(containerCenter - projectCenter);
+        
+        if (distance < closestDistance) {
+            closestDistance = distance;
+            closestProject = project;
+        }
+    });
+    
+    if (closestProject && closestDistance < 200) {
+        const scrollAmount = closestProject.offsetLeft - (container.clientWidth / 2) + (closestProject.clientWidth / 2);
+        
+        gsap.to(container, {
+            scrollLeft: scrollAmount,
+            duration: 0.5,
+            ease: 'power2.out',
+            onUpdate: updateActiveProjects
+        });
+    }
+}
+
+// Add snap on scroll end
+projectsContainer.addEventListener('scrollend', () => {
+    snapToNearestProject();
+});
+
+// For browsers that don't support scrollend
+projectsContainer.addEventListener('touchend', () => {
+    setTimeout(snapToNearestProject, 150);
+});
+
+projectsContainer.addEventListener('mouseup', () => {
+    setTimeout(snapToNearestProject, 150);
+});
+
+// Override the existing drag end to include snap
+const originalDragEnd = handleDragEnd;
+window.handleDragEnd = function() {
+    if (originalDragEnd) originalDragEnd();
+    setTimeout(snapToNearestProject, 150);
+};
