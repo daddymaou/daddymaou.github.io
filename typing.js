@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const typingText = document.getElementById('typing-text');
     const cursor = document.querySelector('.cursor');
     
+    // Array of phrases to type
     const phrases = [
         "Creative Developer",
         "UI/UX Designer",
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
+    let isPaused = false;
     const typingSpeed = 80;
     const deletingSpeed = 40;
     const pauseDuration = 2000;
@@ -21,25 +23,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentPhrase = phrases[phraseIndex];
         
         if (isDeleting) {
+            // Deleting text
             typingText.textContent = currentPhrase.substring(0, charIndex - 1);
             charIndex--;
             
             if (charIndex === 0) {
                 isDeleting = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
-                cursor.style.animationPlayState = 'running';
                 setTimeout(type, 500);
                 return;
             }
         } else {
+            // Typing text
             typingText.textContent = currentPhrase.substring(0, charIndex + 1);
             charIndex++;
             
             if (charIndex === currentPhrase.length) {
-                cursor.style.animationPlayState = 'paused';
-                cursor.style.opacity = '1';
+                isPaused = true;
                 setTimeout(() => {
-                    cursor.style.animationPlayState = 'running';
+                    isPaused = false;
                     isDeleting = true;
                     setTimeout(type, 500);
                 }, pauseDuration);
@@ -51,5 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(type, speed);
     }
     
+    // Start typing animation after a short delay
     setTimeout(type, 1000);
+    
+    // Blinking cursor animation
+    setInterval(() => {
+        if (!isPaused) {
+            cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        }
+    }, 500);
 });
