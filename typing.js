@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let isPaused = false;
     const typingSpeed = 80;
     const deletingSpeed = 40;
     const pauseDuration = 2000;
@@ -30,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (charIndex === 0) {
                 isDeleting = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
+                // Resume cursor blink during transition
+                cursor.style.animationPlayState = 'running';
                 setTimeout(type, 500);
                 return;
             }
@@ -39,9 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
             charIndex++;
             
             if (charIndex === currentPhrase.length) {
-                isPaused = true;
+                // Pause cursor blink while paused
+                cursor.style.animationPlayState = 'paused';
+                cursor.style.opacity = '1';
                 setTimeout(() => {
-                    isPaused = false;
+                    cursor.style.animationPlayState = 'running';
                     isDeleting = true;
                     setTimeout(type, 500);
                 }, pauseDuration);
@@ -55,11 +58,64 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start typing animation after a short delay
     setTimeout(type, 1000);
+});// Typing animation for hero subtitle
+document.addEventListener('DOMContentLoaded', function() {
+    const typingText = document.getElementById('typing-text');
+    const cursor = document.querySelector('.cursor');
     
-    // Blinking cursor animation
-    setInterval(() => {
-        if (!isPaused) {
-            cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+    // Array of phrases to type
+    const phrases = [
+        "Creative Developer",
+        "UI/UX Designer",
+        "Design Engineer",
+        "Problem Solver"
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 80;
+    const deletingSpeed = 40;
+    const pauseDuration = 2000;
+    
+    function type() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            // Deleting text
+            typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            
+            if (charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                // Resume cursor blink during transition
+                cursor.style.animationPlayState = 'running';
+                setTimeout(type, 500);
+                return;
+            }
+        } else {
+            // Typing text
+            typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            
+            if (charIndex === currentPhrase.length) {
+                // Pause cursor blink while paused
+                cursor.style.animationPlayState = 'paused';
+                cursor.style.opacity = '1';
+                setTimeout(() => {
+                    cursor.style.animationPlayState = 'running';
+                    isDeleting = true;
+                    setTimeout(type, 500);
+                }, pauseDuration);
+                return;
+            }
         }
-    }, 500);
+        
+        const speed = isDeleting ? deletingSpeed : typingSpeed;
+        setTimeout(type, speed);
+    }
+    
+    // Start typing animation after a short delay
+    setTimeout(type, 1000);
 });
