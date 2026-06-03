@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ==========================================
-    // FIX #2: SMOOTH ANCHOR LINK SCROLLING
+    // FIX: SMOOTH ANCHOR LINK SCROLLING
     // ==========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ==========================================
-    // FIX #1: PAUSE LENIS ON FORM FOCUS (Mobile keyboard glitch)
+    // FIX: PAUSE LENIS ON FORM FOCUS (Mobile keyboard glitch)
     // ==========================================
     const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
     
