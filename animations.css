@@ -1,4 +1,8 @@
-@keyframes blink {
+/* ============================================
+   BASE ANIMATIONS
+   ============================================ */
+
+   @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
@@ -26,23 +30,23 @@
     }
 }
 
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
     }
 }
 
@@ -57,33 +61,60 @@
     }
 }
 
-/* Theme transition */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ============================================
+   THEME TRANSITIONS
+   ============================================ */
+
 * {
     transition: background-color 0.4s ease, 
                 color 0.4s ease, 
                 border-color 0.4s ease,
                 fill 0.4s ease,
-                stroke 0.4s ease;
+                stroke 0.4s ease,
+                backdrop-filter 0.4s ease;
 }
 
-/* Scroll reveal animations */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* ============================================
+   HERO SECTION ANIMATIONS
+   ============================================ */
 
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Hero name animation */
 .hero-name {
     animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
 }
 
-/* About section staggered animation */
+.hero-subtitle {
+    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+
+.hero-cta {
+    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+}
+
+.scroll-hint {
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 1s both;
+}
+
+/* ============================================
+   ABOUT SECTION ANIMATIONS
+   ============================================ */
+
+.section-title {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
 .about-content p {
     opacity: 0;
     transform: translateY(20px);
@@ -94,46 +125,77 @@
 .about-content p:nth-child(2) { animation-delay: 0.3s; }
 .about-content p:nth-child(3) { animation-delay: 0.5s; }
 
-/* Image frame animation */
 .image-frame {
     opacity: 0;
     transform: translateX(20px);
-    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
 }
 
-/* Skill items animation */
+/* ============================================
+   SKILLS SECTION ANIMATIONS
+   ============================================ */
+
 .skill-item {
     opacity: 0;
     transform: translateY(10px);
     animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.skill-item:nth-child(1) { animation-delay: 0.1s; }
-.skill-item:nth-child(2) { animation-delay: 0.2s; }
-.skill-item:nth-child(3) { animation-delay: 0.3s; }
-.skill-item:nth-child(4) { animation-delay: 0.4s; }
-.skill-item:nth-child(5) { animation-delay: 0.5s; }
-.skill-item:nth-child(6) { animation-delay: 0.6s; }
+.skill-item:nth-child(1) { animation-delay: 0.05s; }
+.skill-item:nth-child(2) { animation-delay: 0.1s; }
+.skill-item:nth-child(3) { animation-delay: 0.15s; }
+.skill-item:nth-child(4) { animation-delay: 0.2s; }
+.skill-item:nth-child(5) { animation-delay: 0.25s; }
+.skill-item:nth-child(6) { animation-delay: 0.3s; }
+.skill-item:nth-child(7) { animation-delay: 0.35s; }
+.skill-item:nth-child(8) { animation-delay: 0.4s; }
+.skill-item:nth-child(9) { animation-delay: 0.45s; }
+.skill-item:nth-child(10) { animation-delay: 0.5s; }
+.skill-item:nth-child(11) { animation-delay: 0.55s; }
 
-/* Project card animation */
+/* ============================================
+   PROJECTS SECTION ANIMATIONS
+   ============================================ */
+
 .project {
     opacity: 0;
     transform: translateX(50px);
-    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .project:nth-child(1) { animation-delay: 0.1s; }
 .project:nth-child(2) { animation-delay: 0.2s; }
 .project:nth-child(3) { animation-delay: 0.3s; }
 .project:nth-child(4) { animation-delay: 0.4s; }
+.project:nth-child(5) { animation-delay: 0.5s; }
+.project:nth-child(6) { animation-delay: 0.6s; }
 
-/* CV button animation */
+.project.active {
+    animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.scroll-hint-horizontal {
+    animation: fadeIn 0.8s ease 0.5s both;
+}
+
+/* ============================================
+   CV SECTION ANIMATIONS
+   ============================================ */
+
 .cv-button {
     opacity: 0;
     animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
 }
 
-/* Form animation */
+.cv-button:hover .button-underline {
+    transform: scaleX(1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   CONTACT FORM ANIMATIONS
+   ============================================ */
+
 .form-group {
     opacity: 0;
     transform: translateY(10px);
@@ -143,23 +205,146 @@
 .form-group:nth-child(1) { animation-delay: 0.1s; }
 .form-group:nth-child(2) { animation-delay: 0.2s; }
 .form-group:nth-child(3) { animation-delay: 0.3s; }
-.submit-button { animation-delay: 0.4s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
 
-/* Theme toggle animation */
-.theme-toggle {
-    animation: fadeIn 0.5s ease 0.8s both;
+.submit-button {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
 }
 
-/* Smooth scroll behavior for mobile */
-@media (max-width: 768px) {
-    .reveal {
-        transform: translateY(15px);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+.submit-button.clicked span {
+    animation: fadeOutIn 0.5s ease;
+}
+
+@keyframes fadeOutIn {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ============================================
+   FOOTER ANIMATIONS
+   ============================================ */
+
+.footer-links a {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.footer-links a:nth-child(1) { animation-delay: 0.1s; }
+.footer-links a:nth-child(2) { animation-delay: 0.15s; }
+.footer-links a:nth-child(3) { animation-delay: 0.2s; }
+.footer-links a:nth-child(4) { animation-delay: 0.25s; }
+.footer-links a:nth-child(5) { animation-delay: 0.3s; }
+
+.footer-copyright {
+    opacity: 0;
+    animation: fadeIn 0.5s ease 0.35s forwards;
+}
+
+/* ============================================
+   LOADER ANIMATION
+   ============================================ */
+
+.page-loader {
+    animation: fadeIn 0.3s ease;
+}
+
+.page-loader.hidden {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        visibility: visible;
     }
-    
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.loader-text {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* ============================================
+   RESPONSIVE ANIMATION ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
     .about-content p,
     .skill-item,
     .form-group {
         animation-duration: 0.5s;
+    }
+    
+    .project {
+        animation-duration: 0.5s;
+    }
+    
+    .project.inactive {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .project.inactive,
+    .project.active {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .typing-text,
+    .cursor {
+        animation: none !important;
+    }
+    
+    .hero-name,
+    .hero-subtitle,
+    .hero-cta {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .custom-cursor,
+    .cursor-dot,
+    .page-loader,
+    .nav,
+    .scroll-hint,
+    .slider-arrows {
+        display: none !important;
     }
 }
