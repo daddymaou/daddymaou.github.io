@@ -169,24 +169,23 @@
         margin-bottom: 1.5rem;
     }
 
-    .scroll-hint-horizontal {
-        font-size: 0.85rem;
+    .projects-nav {
+        gap: 0.75rem;
     }
 
-    .scroll-text {
-        display: inline-block;
+    .project-nav-btn {
+        width: 40px;
+        height: 40px;
     }
 
     .projects-container {
         padding: 0 1rem;
         gap: 1rem;
-        scroll-snap-type: x mandatory;
     }
 
     .project {
         flex: 0 0 calc(85vw - 2rem);
         min-height: 420px;
-        scroll-snap-align: start;
     }
 
     .project-image {
@@ -242,7 +241,6 @@
         font-size: 0.95rem;
     }
 
-    /* Prevent iOS zoom on input focus */
     .form-group input,
     .form-group textarea {
         font-size: 16px !important;
@@ -402,7 +400,6 @@
         width: 100%;
     }
 
-    /* Improve touch targets (WCAG 2.5.5) */
     .nav-link,
     .theme-toggle,
     .cta-button,
@@ -459,7 +456,6 @@
 
 /* ============================================
    System Dark Mode Preference
-   Only applies when no explicit theme is set
    ============================================ */
 @media (prefers-color-scheme: dark) {
     body:not([data-theme="light"]):not([data-theme="dark"]) {
