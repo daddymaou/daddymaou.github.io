@@ -469,14 +469,44 @@ button:focus:not(:focus-visible) {
     align-items: flex-end;
 }
 
-.scroll-hint-horizontal {
+/* Projects navigation buttons */
+.projects-nav {
     display: flex;
-    align-items: center;
     gap: 0.5rem;
-    color: var(--color-text-light);
-    font-size: 0.9rem;
 }
 
+.project-nav-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition);
+}
+
+.project-nav-btn:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    border-color: var(--color-text);
+}
+
+.project-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.project-nav-btn:disabled:hover {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+
+/* Projects container */
 .projects-container {
     display: flex;
     gap: var(--spacing-md);
@@ -484,12 +514,7 @@ button:focus:not(:focus-visible) {
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    cursor: grab;
     padding-bottom: 1rem;
-}
-
-.projects-container:active {
-    cursor: grabbing;
 }
 
 .projects-container::-webkit-scrollbar {
@@ -553,23 +578,28 @@ button:focus:not(:focus-visible) {
     gap: 1rem;
 }
 
-/* Projects scrollbar */
-.projects-scrollbar {
-    max-width: var(--container-width);
-    margin: 1rem auto 0;
-    padding: 0 var(--spacing-sm);
-    height: 4px;
-    background-color: var(--color-border);
-    border-radius: 2px;
-    overflow: hidden;
+/* Projects dots indicator */
+.projects-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
 }
 
-.scrollbar-thumb {
-    height: 100%;
+.project-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-border);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all var(--transition);
+}
+
+.project-dot.active {
     background-color: var(--color-text);
-    border-radius: 2px;
-    width: 20%;
-    transition: background-color 0.4s ease;
+    transform: scale(1.3);
 }
 
 /* ============================================
