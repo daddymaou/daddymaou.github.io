@@ -9,13 +9,7 @@ const lenis = new Lenis({
     touchMultiplier: 2
 });
 
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-// GSAP ScrollTrigger integration
+// GSAP ScrollTrigger integration — single RAF, no duplicate
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => lenis.raf(time * 1000));
 gsap.ticker.lagSmoothing(0);
@@ -113,21 +107,27 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', newTheme);
     });
     
-    // Navigation scroll behavior
+    // Navigation scroll behavior — throttled to prevent layout thrashing
     const nav = document.querySelector('.nav');
     const navProgress = document.querySelector('.nav-progress');
-    let lastScroll = 0;
+    let navTimeout;
     
-    lenis.on('scroll', ({ scroll }) => {
+    lenis.on('scroll', ({ scroll, direction }) => {
         // Progress bar
-        const progress = (scroll / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scroll / docHeight) * 100 : 0;
         navProgress.style.width = `${progress}%`;
         
-        // Hide/show nav
-        if (scroll > lastScroll && scroll > 100) {
-            nav.classList.add('hidden');
-        } else {
-            nav.classList.remove('hidden');
+        // Hide/show nav — throttled, uses Lenis direction
+        if (!navTimeout) {
+            navTimeout = setTimeout(() => {
+                if (scroll > 100 && direction === 1) {
+                    nav.classList.add('hidden');
+                } else if (direction === -1) {
+                    nav.classList.remove('hidden');
+                }
+                navTimeout = null;
+            }, 50);
         }
         
         // Add background on scroll
@@ -136,8 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             nav.classList.remove('scrolled');
         }
-        
-        lastScroll = scroll;
     });
     
     // GSAP Animations
@@ -295,8 +293,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update scrollbar
     function updateScrollbar() {
-        if (!scrollbarThumb) return;
-        const scrollPercentage = projectsContainer.scrollLeft / (projectsContainer.scrollWidth - projectsContainer.clientWidth);
+        if (!scrollbarThumb || !projectsContainer) return;
+        const maxScroll = projectsContainer.scrollWidth - projectsContainer.clientWidth;
+        if (maxScroll <= 0) return;
+        const scrollPercentage = projectsContainer.scrollLeft / maxScroll;
         const thumbWidth = (projectsContainer.clientWidth / projectsContainer.scrollWidth) * 100;
         scrollbarThumb.style.width = `${Math.max(thumbWidth, 10)}%`;
         scrollbarThumb.style.transform = `translateX(${scrollPercentage * (100 - thumbWidth)}%)`;
@@ -323,8 +323,11 @@ document.addEventListener('DOMContentLoaded', function() {
         momentumId = requestAnimationFrame(animateMomentum);
     }
     
-    // Drag start
+    // Drag start — prevents vertical scroll on touch devices
     function handleDragStart(e) {
+        if (e.type === 'touchstart') {
+            e.preventDefault();
+        }
         isDragging = true;
         projectsContainer.style.cursor = 'grabbing';
         
@@ -385,22 +388,16 @@ document.addEventListener('DOMContentLoaded', function() {
     projectsContainer.addEventListener('touchmove', handleDragMove, { passive: false });
     projectsContainer.addEventListener('touchend', handleDragEnd);
     
-    // Mouse wheel horizontal scroll
+    // Mouse wheel horizontal scroll — uses native scrollBy instead of fighting GSAP
     projectsContainer.addEventListener('wheel', (e) => {
         if (e.deltaY !== 0) {
             e.preventDefault();
             
             cancelAnimationFrame(momentumId);
             
-            const scrollAmount = e.deltaY * 1.5;
-            const startScroll = projectsContainer.scrollLeft;
-            const targetScroll = startScroll + scrollAmount;
-            
-            gsap.to(projectsContainer, {
-                scrollLeft: targetScroll,
-                duration: 0.8,
-                ease: 'power2.out',
-                onUpdate: updateScrollbar
+            projectsContainer.scrollBy({
+                left: e.deltaY * 1.5,
+                behavior: 'smooth'
             });
         }
     }, { passive: false });
@@ -444,7 +441,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Smooth scroll for anchor links
+    // ==========================================
+    // FIX #2: SMOOTH ANCHOR LINK SCROLLING
+    // ==========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -457,9 +456,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 lenis.scrollTo(targetElement, {
                     offset: -80,
                     duration: 1.2,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    onComplete: () => {
+                        ScrollTrigger.refresh();
+                    }
                 });
             }
+        });
+    });
+    
+    // ==========================================
+    // FIX #1: PAUSE LENIS ON FORM FOCUS (Mobile keyboard glitch)
+    // ==========================================
+    const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+    
+    formInputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            lenis.stop();
+        });
+        
+        input.addEventListener('blur', () => {
+            lenis.start();
         });
     });
     
@@ -471,19 +488,21 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
             
             if (!name || !email || !phone || !message) {
                 alert('Please fill in all fields before sending.');
                 return;
             }
             
-            const phoneRegex = /^[\+]?[0-9\s\-\(\)]+$/;
-            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
-                alert('Please enter a valid phone number.');
+            // Improved phone validation
+            const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
+            const phoneRegex = /^\+?[0-9]{7,15}$/;
+            if (!phoneRegex.test(cleanedPhone)) {
+                alert('Please enter a valid phone number (7-15 digits).');
                 return;
             }
             
@@ -515,6 +534,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (messageTextarea) {
                     messageTextarea.style.height = 'auto';
                 }
+                
+                // Restart Lenis after form reset (in case it was stopped)
+                lenis.start();
                 
                 setTimeout(() => {
                     submitButton.querySelector('span').textContent = originalText;
