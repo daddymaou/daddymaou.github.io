@@ -2,82 +2,64 @@
 
 # 𝗠𝗔𝗢𝗨𝗞𝗡𝗢𝗪𝗦𝗝𝗔𝗩𝗔
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=9BB8E6&center=true&vCenter=true&width=500&lines=Building+Things+That+Shouldn't+Exist+Yet." alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=9BB8E6&center=true&vCenter=true&width=600&lines=I+build+digital+experiences;Clean+design+%2B+practical+functionality;Human+%26+distinct+interfaces" alt="Typing SVG" />
 
 **Full-Stack Developer · AI Systems Engineer · Automation Architect · Digital Product Builder**
 
-</div>
-
 ---
 
-<!-- WHOAMI -->
+</div>
+
 ## 🧠 WHOAMI
 
-I'm a developer obsessed with turning ideas into systems.
+With **3 years** in the field, I focus on creating interfaces that feel human and distinct, steering clear of passing trends. My work lives at the intersection of programming and design exploration.
 
-From AI-powered tools and automation workflows to scalable web applications and digital products, I enjoy building technology that feels simple on the surface and powerful underneath.
-
-I spend most of my time exploring new technologies, creating products, solving problems, and experimenting with ideas that push beyond conventional software.
+Currently exploring experimental web interactions and lightweight digital products. Based in **Nigeria**, willing to collaborate with clients across the globe.
 
 ---
 
 <!-- PHOTO PLACEHOLDER – replace the src with your own image URL -->
 <div align="center">
-  <img src="https://ui-avatars.com/api/?name=MAOUK&background=1a2330&color=9bb8e6&size=200&font-size=0.5&bold=true" alt="MAOUK" width="160" style="border-radius: 40px;" />
+  <img src="https://ui-avatars.com/api/?name=MAOUK&background=1a2330&color=9bb8e6&size=200&font-size=0.5&bold=true" alt="MAOUKNOWSJAVA" width="160" style="border-radius: 40px;" />
   <br />
-  <em>— builder · breaker · maker —</em>
+  <em>— building at the intersection of code & design —</em>
 </div>
 
 ---
 
-## 🔄 CURRENTLY
+## 🛠️ CAPABILITIES
 
 <table>
   <tr>
     <td valign="top" width="33%">
-      <h3>📖 Learning</h3>
+      <h3>🌐 Frontend</h3>
       <ul>
-        <li>Advanced AI Systems</li>
-        <li>Scalable Architectures</li>
-        <li>Product Engineering</li>
+        <li><strong>HTML & CSS</strong> — clean, responsive layouts</li>
+        <li><strong>JavaScript</strong> — dynamic, interactive experiences</li>
+        <li><strong>TypeScript / TSX</strong> — typed components, scalable</li>
+        <li><strong>React</strong> — component‑driven development</li>
       </ul>
     </td>
     <td valign="top" width="33%">
-      <h3>🏗️ Building</h3>
+      <h3>⚙️ Backend & Languages</h3>
       <ul>
-        <li>AI Experiences</li>
-        <li>Developer Tools</li>
-        <li>Automation Systems</li>
-        <li>Modern Web Applications</li>
+        <li><strong>Python</strong> — scripting, automation, backend</li>
+        <li><strong>Java</strong> — robust, OOP applications</li>
+        <li><strong>C++</strong> — high‑performance & system logic</li>
+        <li><strong>Node.js</strong> — scalable server‑side apps</li>
+        <li><strong>Django</strong> — robust backend frameworks</li>
       </ul>
     </td>
     <td valign="top" width="33%">
-      <h3>🔭 Exploring</h3>
+      <h3>🎨 Creative & Design</h3>
       <ul>
-        <li>Human + AI Workflows</li>
-        <li>Intelligent Agents</li>
-        <li>Future Interfaces</li>
+        <li><strong>Creative Development</strong> — custom solutions beyond frameworks</li>
+        <li><strong>UI/UX Architecture</strong> — from concept to pixel‑perfect</li>
+        <li><strong>Experimental Web</strong> — interactions & lightweight products</li>
       </ul>
     </td>
   </tr>
 </table>
-
----
-
-## 🧰 TECH STACK
-
-<div align="center">
-
-### Frontend
-`HTML` `CSS` `JavaScript` `TypeScript` · `React` `Next.js` `TailwindCSS`
-
-### Backend
-`Node.js` `Express.js` · `REST APIs` `Authentication` · `MongoDB` `Firebase` `Supabase`
-
-### AI & Automation
-`AI Agents` `Prompt Engineering` `Workflow Automation` `Telegram Bots` `Business Automation`
-
-</div>
 
 ---
 
@@ -110,5 +92,9 @@ I spend most of my time exploring new technologies, creating products, solving p
 ### “Code. Automate. Iterate.”
 
 <img src="https://komarev.com/ghpvc/?username=maoukn&color=9BB8E6&style=flat-square&label=visitors" alt="visitors" />
+
+---
+
+**© 2026 ᗰᗩOᑌ**
 
 </div>
