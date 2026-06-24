@@ -1,6 +1,6 @@
 <div align="center">
 
-# 𝗠𝗔𝗢𝗨𝗞𝗡𝗢𝗪𝗦𝗝𝗔𝗩𝗔
+#  ᗰᗩOᑌ.
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=9BB8E6&center=true&vCenter=true&width=600&lines=I+build+digital+experiences;Clean+design+%2B+practical+functionality;Human+%26+distinct+interfaces" alt="Typing SVG" />
 
@@ -10,7 +10,7 @@
 
 </div>
 
-## 🧠 WHOAMI
+## WHOAMI
 
 With **3 years** in the field, I focus on creating interfaces that feel human and distinct, steering clear of passing trends. My work lives at the intersection of programming and design exploration.
 
@@ -27,12 +27,12 @@ Currently exploring experimental web interactions and lightweight digital produc
 
 ---
 
-## 🛠️ CAPABILITIES
+##  CAPABILITIES
 
 <table>
   <tr>
     <td valign="top" width="33%">
-      <h3>🌐 Frontend</h3>
+      <h3> Frontend</h3>
       <ul>
         <li><strong>HTML & CSS</strong> — clean, responsive layouts</li>
         <li><strong>JavaScript</strong> — dynamic, interactive experiences</li>
@@ -41,7 +41,7 @@ Currently exploring experimental web interactions and lightweight digital produc
       </ul>
     </td>
     <td valign="top" width="33%">
-      <h3>⚙️ Backend & Languages</h3>
+      <h3> Backend & Languages</h3>
       <ul>
         <li><strong>Python</strong> — scripting, automation, backend</li>
         <li><strong>Java</strong> — robust, OOP applications</li>
@@ -51,7 +51,7 @@ Currently exploring experimental web interactions and lightweight digital produc
       </ul>
     </td>
     <td valign="top" width="33%">
-      <h3>🎨 Creative & Design</h3>
+      <h3> Creative & Design</h3>
       <ul>
         <li><strong>Creative Development</strong> — custom solutions beyond frameworks</li>
         <li><strong>UI/UX Architecture</strong> — from concept to pixel‑perfect</li>
@@ -61,17 +61,8 @@ Currently exploring experimental web interactions and lightweight digital produc
   </tr>
 </table>
 
----
 
-## 💭 PHILOSOPHY
-
-> *«Software should feel effortless.*  
-> *The best systems aren't the ones users notice —*  
-> *they're the ones quietly solving problems in the background.»*
-
----
-
-## 🌐 CONNECT
+##  GET IN TOUCH
 
 <div align="center">
 
@@ -80,8 +71,6 @@ Currently exploring experimental web interactions and lightweight digital produc
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/2348154899093)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/maoukn)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/fwmaou)
-
-**Discord:** fwmaou · **Telegram:** @fwmaou · **WhatsApp:** +2348154899093
 
 </div>
 
