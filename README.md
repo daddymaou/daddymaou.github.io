@@ -1,90 +1,72 @@
-<div align="center">𝗠𝗔𝗢𝗨𝗞𝗡𝗢𝗪𝗦𝗝𝗔𝗩𝗔
+<div align="center">𝙈𝘼𝙊𝙐𝙆𝙉𝙊𝙒𝙎𝙅𝘼𝙑𝘼
 
-Building Things That Shouldn't Exist Yet.
-
-Full-Stack Developer
-AI Systems Engineer
-Automation Architect
-Digital Product Builder
+<img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=22&pause=1000&color=8B5CF6&center=true&vCenter=true&width=600&lines=Full-Stack+Developer;AI+Systems+Engineer;Automation+Builder;Creating+Digital+Experiences" /><br>const maou = {
+  role: "Full-Stack Developer",
+  focus: [
+    "AI Systems",
+    "Automation",
+    "Modern Web Apps",
+    "Digital Products"
+  ],
+  status: "Building the future, one project at a time."
+};
 
 </div>---
 
-// WHOAMI
+⟡ ABOUT
 
-I'm a developer obsessed with turning ideas into systems.
+I build intelligent products that blend modern web technologies, automation, and AI into experiences that are fast, scalable, and human-friendly.
 
-From AI-powered tools and automation workflows to scalable web applications and digital products, I enjoy building technology that feels simple on the surface and powerful underneath.
+My goal isn't just to write code.
 
-I spend most of my time exploring new technologies, creating products, solving problems, and experimenting with ideas that push beyond conventional software.
-
----
-
-// CURRENTLY
-
-Learning:
-  - Advanced AI Systems
-  - Scalable Architectures
-  - Product Engineering
-
-Building:
-  - AI Experiences
-  - Developer Tools
-  - Automation Systems
-  - Modern Web Applications
-
-Exploring:
-  - Human + AI Workflows
-  - Intelligent Agents
-  - Future Interfaces
+It's to create systems that remove friction, automate complexity, and make technology feel invisible.
 
 ---
 
-// TECH STACK
+⟡ STACK
 
-Frontend
+<div align="center">"JavaScript" (https://img.shields.io/badge/JavaScript-111111?style=for-the-badge&logo=javascript)
+"TypeScript" (https://img.shields.io/badge/TypeScript-111111?style=for-the-badge&logo=typescript)
+"React" (https://img.shields.io/badge/React-111111?style=for-the-badge&logo=react)
+"NextJS" (https://img.shields.io/badge/Next.js-111111?style=for-the-badge&logo=next.js)
 
-HTML • CSS • JavaScript • TypeScript
-React • Next.js • TailwindCSS
+"NodeJS" (https://img.shields.io/badge/Node.js-111111?style=for-the-badge&logo=node.js)
+"MongoDB" (https://img.shields.io/badge/MongoDB-111111?style=for-the-badge&logo=mongodb)
+"Firebase" (https://img.shields.io/badge/Firebase-111111?style=for-the-badge&logo=firebase)
+"Supabase" (https://img.shields.io/badge/Supabase-111111?style=for-the-badge&logo=supabase)
 
-Backend
+</div>---
 
-Node.js • Express.js
-REST APIs • Authentication
-MongoDB • Firebase • Supabase
+⟡ CURRENTLY BUILDING
 
-AI & Automation
-
-AI Agents
-Prompt Engineering
-Workflow Automation
-Telegram Bots
-Business Automation
-
----
-
-// PHILOSOPHY
-
-«Software should feel effortless.
-
-The best systems aren't the ones users notice —
-they're the ones quietly solving problems in the background.»
+▸ AI-Powered Systems
+▸ Automation Workflows
+▸ Developer Tools
+▸ Productivity Platforms
+▸ Experimental Digital Products
 
 ---
 
-// CONNECT
+⟡ MINDSET
 
-Discord      : fwmaou
-Telegram     : @fwmaou
-WhatsApp     : +2348154899093
+«Great software isn't measured by complexity.
+
+It's measured by how effortlessly people use it.»
 
 ---
 
-<div align="center">"Code. Automate. Iterate."
+⟡ NETWORK
+
+Discord: fwmaou
+Telegram: @fwmaou
+WhatsApp: +2348154899093
+Portfolio: daddymaou.github.io/maou
+
+---
+
+<div align="center">ᴄᴏᴅᴇ • ʙᴜɪʟᴅ • ᴀᴜᴛᴏᴍᴀᴛᴇ
 
 </div>  </a>
-  <a href="https://wa.me/2348154899093" target="_blank">
-    <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
-  </a>
 </p>
 
 </div>
