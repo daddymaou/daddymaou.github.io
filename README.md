@@ -20,7 +20,7 @@ Currently exploring experimental web interactions and lightweight digital produc
 
 <!-- PHOTO PLACEHOLDER – replace the src with your own image URL -->
 <div align="center">
-  <img src="https://ui-avatars.com/api/?name=MAOUK&background=1a2330&color=9bb8e6&size=200&font-size=0.5&bold=true" alt="MAOUKNOWSJAVA" width="160" style="border-radius: 40px;" />
+  <img src="https://files.catbox.moe/n27oqg.jpg" alt="MAOUKNOWSJAVA" width="160" style="border-radius: 40px;" />
   <br />
   <em>— building at the intersection of code & design —</em>
 </div>
