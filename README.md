@@ -10,9 +10,9 @@
 
 </div>
 
-## WHOAMI
+## ABOUT
 
-With **3 years** in the field, I focus on creating interfaces that feel human and distinct, steering clear of passing trends. My work lives at the intersection of programming and design exploration.
+With **4 years** in the field, I focus on creating interfaces that feel human and distinct, steering clear of passing trends. My work lives at the intersection of programming and design exploration.
 
 Currently exploring experimental web interactions and lightweight digital products. Based in **Nigeria**, willing to collaborate with clients across the globe.
 
@@ -70,7 +70,6 @@ Currently exploring experimental web interactions and lightweight digital produc
 [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/fwmaou)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/2348154899093)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/maoukn)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/fwmaou)
 
 </div>
 
