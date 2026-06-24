@@ -1,20 +1,87 @@
-<div align="center">
+<div align="center">𝗠𝗔𝗢𝗨𝗞𝗡𝗢𝗪𝗦𝗝𝗔𝗩𝗔
 
-<img src="https://via.placeholder.com/1200x300/0A0A0A/00FF88.png?text=MAOUKNOWSJAVA" alt="Banner" width="100%"/>
+Building Things That Shouldn't Exist Yet.
 
-# MAOUKNOWSJAVA
+Full-Stack Developer
+AI Systems Engineer
+Automation Architect
+Digital Product Builder
 
-**Full-Stack Developer • AI Systems Engineer • Automation Builder**
+</div>---
 
-I build systems that solve problems, automate workflows, and power real-world digital experiences.
+// WHOAMI
 
-<p>
-  <a href="https://daddymaou.github.io/maou/" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-daddymaou.github.io-00FF88?style=for-the-badge&logo=google-chrome&logoColor=black" alt="Portfolio"/>
-  </a>
-  <a href="https://aniiverse.name.ng" target="_blank">
-    <img src="https://img.shields.io/badge/Aniiverse-Live-FF2D55?style=for-the-badge&logo=vercel&logoColor=white" alt="Aniiverse"/>
-  </a>
+I'm a developer obsessed with turning ideas into systems.
+
+From AI-powered tools and automation workflows to scalable web applications and digital products, I enjoy building technology that feels simple on the surface and powerful underneath.
+
+I spend most of my time exploring new technologies, creating products, solving problems, and experimenting with ideas that push beyond conventional software.
+
+---
+
+// CURRENTLY
+
+Learning:
+  - Advanced AI Systems
+  - Scalable Architectures
+  - Product Engineering
+
+Building:
+  - AI Experiences
+  - Developer Tools
+  - Automation Systems
+  - Modern Web Applications
+
+Exploring:
+  - Human + AI Workflows
+  - Intelligent Agents
+  - Future Interfaces
+
+---
+
+// TECH STACK
+
+Frontend
+
+HTML • CSS • JavaScript • TypeScript
+React • Next.js • TailwindCSS
+
+Backend
+
+Node.js • Express.js
+REST APIs • Authentication
+MongoDB • Firebase • Supabase
+
+AI & Automation
+
+AI Agents
+Prompt Engineering
+Workflow Automation
+Telegram Bots
+Business Automation
+
+---
+
+// PHILOSOPHY
+
+«Software should feel effortless.
+
+The best systems aren't the ones users notice —
+they're the ones quietly solving problems in the background.»
+
+---
+
+// CONNECT
+
+Discord      : fwmaou
+Telegram     : @fwmaou
+WhatsApp     : +2348154899093
+
+---
+
+<div align="center">"Code. Automate. Iterate."
+
+</div>  </a>
   <a href="https://wa.me/2348154899093" target="_blank">
     <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
   </a>
